@@ -536,7 +536,7 @@ details.more .src{margin-top:6px}
 .clg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;font-size:13.5px;line-height:1.4;color:var(--dim)}
 @media (max-width:720px){.clg{grid-template-columns:minmax(0,1fr)}}
 .clg span{display:grid;grid-template-columns:12px auto minmax(0,1fr);gap:0 8px;align-items:baseline}
-.clg span::before{content:"";width:10px;height:10px;border-radius:3px;align-self:center}
+.clg span::before{content:"";width:10px;height:10px;border-radius:3px;align-self:start;margin-top:5px}
 .clg b{font:700 15px/1 var(--f-display);color:var(--text);font-variant-numeric:tabular-nums}
 .mx4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 @media (max-width:1000px){.mx4{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -553,7 +553,7 @@ details.more .src{margin-top:6px}
 @media (max-width:1000px){.btop{grid-template-columns:minmax(0,1fr)}}
 .vs{background:linear-gradient(180deg,var(--hema-wash),var(--desk-2));border:1px solid var(--hema);border-radius:16px;padding:18px;display:grid;gap:14px;align-content:center}
 .vs .t{font-size:14.5px;font-weight:600;color:var(--text)}
-.vsr{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr) 58px;gap:12px;align-items:center}
+.vsr{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr) max-content;gap:12px;align-items:center}
 .vsr .lab{font-size:13px;line-height:1.3;color:var(--dim)}
 .vsr .track{display:block;height:14px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden}
 .vsr .fill{display:block;height:100%;border-radius:999px;background:var(--faint)}
@@ -563,7 +563,7 @@ details.more .src{margin-top:6px}
 .vsr.us b{color:var(--eosin)}
 .vs p{font-size:13.5px;line-height:1.4;color:var(--text)}
 .vs .cite{font:400 11.5px/1.4 var(--f-mono);color:var(--faint)}
-@media (max-width:480px){.vsr{grid-template-columns:minmax(0,1fr) 46px}.vsr .track{grid-column:1 / -1;grid-row:2}}
+@media (max-width:480px){.vsr{grid-template-columns:minmax(0,1fr) max-content}.vsr .track{grid-column:1 / -1;grid-row:2}}
 
 /* ===== сцена 7: опрос врачей ===== */
 .survey{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:16px;align-items:center;background:var(--desk-2);border:1px solid var(--rule);border-radius:16px;padding:20px}
@@ -638,6 +638,7 @@ details.more .src{margin-top:6px}
   .s4 > .live .src{grid-column:1/-1}
   .s4 > .live div{display:grid;gap:2px;font-size:13px;line-height:1.3}
   .s4 .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .s4 .cats b{font-size:13px;hyphens:auto;overflow-wrap:break-word}
 }
 
 /* ===== ноутбук: каждый слайд — в один экран (низкий экран шире планшета); остаток добирает fit() в скрипте ===== */
@@ -843,7 +844,7 @@ main{display:block}
   <p class="say">Слева — что видит врач. Справа — что в это время делает система: выбирает сценарий, ищет в базе и PubMed, строит ответ по структуре сценария и у каждого факта ставит источник.</p>
 </section>
 
-<section class="slide s4" data-track="owner" data-dur="30" hidden>
+<section class="slide s4" lang="ru" data-track="owner" data-dur="30" hidden>
   <div class="eyebrow">Что внутри</div>
   <h2>Подключает сценарий и отвечает <em>по его правилам</em></h2>
   <div class="cat4" data-live="cats">
@@ -1353,10 +1354,10 @@ main{display:block}
    <span class="src2" data-in="7000">Вопросы нашего бенчмарка; ответы ассистента — реальные, август 2026.</span>
   </div>
 
-  <div class="rs" data-dur="5200" data-cap="Врачи уже работали с ассистентом">
+  <div class="rs" data-dur="5800" data-cap="Врачи уже работали с ассистентом">
    <span class="k" data-in="0">Пилот</span>
    <h3 class="xl" data-in="0"><em>363 диалога</em> с врачами</h3>
-   <p data-in="900">Чаще всего — разбор трудного случая и дифференциальный ряд.</p>
+   <p data-in="900"><strong>27 врачей</strong>, 812 вопросов. Чаще всего — разбор трудного случая и дифференциальный ряд.</p>
    <p data-in="1500">Последняя проверка врачом: <strong>20 из 20</strong> ответов — положительная оценка.</p>
   </div>
 
@@ -1371,6 +1372,15 @@ main{display:block}
     <div data-in="3200"><b>33 из 41</b><span>ответ лучше эталона — по оценке врача</span></div>
    </div>
    <span class="src2" data-in="3900">Прогон 18–19.08.2026, оценка модели-судьи; проверка врачом — сентябрь 2026.</span>
+  </div>
+
+  <div class="rs" data-dur="4600" data-cap="Ассистент OneCell и LLM в чате">
+   <span class="k" data-in="0">Сравнение</span>
+   <h3 data-in="0" style="font-size:8cqw">Ключевые факты <em>в ответе</em></h3>
+   <div class="rbars">
+    <div class="rb" data-in="700"><div class="l">Ассистент OneCell<b>78%</b></div><div class="t"><i data-w="800" data-to="78"></i></div></div>
+    <div class="rb low" data-in="1100"><div class="l">LLM в чате<b>62%</b></div><div class="t"><i data-w="1200" data-to="62"></i></div></div>
+   </div>
   </div>
 
   <div class="rs" data-dur="5600" data-cap="Патологи уже готовы">
@@ -1760,9 +1770,15 @@ main{display:block}
 
 
   // ===== вертикальный ролик (#reel): все анимации считаются от времени кадра =====
-  if (hash === "reel") {
+  var reelPick = /^reel(?:-([\d.]+))?$/.exec(hash);
+  if (reelPick) {
     document.body.classList.add("reel");
     var rf = document.querySelector("#reel .rf");
+    // отдельный ролик из выбранных сцен: #reel-6.7.8 (номера сцен с 1)
+    if (reelPick[1]) {
+      var keep = reelPick[1].split(".").map(Number);
+      [].slice.call(rf.querySelectorAll(".rs")).forEach(function(sc, k){ if (keep.indexOf(k + 1) < 0) sc.remove(); });
+    }
     var scenes = [].slice.call(rf.querySelectorAll(".rs"));
     var starts = [], total = 0;
     scenes.forEach(function(sc){ starts.push(total); total += +sc.getAttribute("data-dur"); });
